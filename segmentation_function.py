@@ -24,22 +24,6 @@ def water_shed_segmentation(BW, threshold):
     return L
 
 
-def convex_judge(B):
-    """
-    Determines if a given boundary is convex.
-
-    Args:
-        B (numpy.ndarray): Nx2 array of boundary points.
-
-    Returns:
-        bool: True if the boundary is convex, False otherwise.
-    """
-    mask = np.zeros((512, 512), dtype=np.uint8)
-    rr, cc = B[:, 1], B[:, 0]  # Rows and Columns
-    cv2.fillPoly(mask, [np.array([cc, rr]).T], 1)
-    props = regionprops(mask)
-    return props[0].solidity > 0.9 if props else False
-
 
 def process_image(image):
     """
