@@ -62,7 +62,8 @@ class iterativeclustering:
                 
                 mvnpdf = multivariate_normal(mean=mu[i,:], cov=np.diag(sigma[i,:]))
                 P = mvnpdf.pdf(data[labels==i])
-                L += np.log(np.sum(pi[i]*P))
+                if np.sum(pi[i]*P) > 0:
+                    L += np.log(np.sum(pi[i]*P))
 
         return(L)
 
@@ -106,8 +107,8 @@ class iterativeclustering:
                 L = L_new
                 count += 1
     
-        else:
-            print("Maximum number of iterations reached.")
+        # else:
+        #     print("Maximum number of iterations reached.")
     
         # Store the parameters in the Params object
         params = self.Params(mu=mu, sigma=sigma, pi=pi)
