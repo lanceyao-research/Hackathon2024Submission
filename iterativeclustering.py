@@ -212,7 +212,7 @@ class iterativeclustering:
                 P_mat[k_idx][cnt] = self.P_matrix(data, class_idx_em_temp, params)
     
                 # Compute and store P_max
-                if np.max(class_idx_em_temp) != 1:
+                if np.max(class_idx_em_temp) != 0:
                     # Extract the current P_mat
                     current_P_mat = P_mat[k_idx][cnt]
     
