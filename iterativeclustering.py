@@ -73,7 +73,7 @@ class iterativeclustering:
             self.sigma = sigma 
             self.pi = pi   
 
-    def naivebayes(self, data, initial_labels, max_iterations=1000, tol=1e-5):
+    def naivebayes(self, data, initial_labels, max_iterations=100, tol=1e-5):
 
         mu, sigma, pi = self.compute_distribution(data, initial_labels)
         L = self.loglikelihood(data, initial_labels, mu, sigma, pi)
