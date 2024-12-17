@@ -51,8 +51,7 @@ def process_image(image):
     Returns:
         numpy.ndarray: Array of all convex contours (all_Bs_array).
     """
-    all_Bs = []  # List to store all contours
-    
+
     # Preprocessing masks
     M = cv2.resize(image, (512, 512))  # Resize to standard size
     S = (M > 50) & (M < 180)  # Non-overlapping particles
@@ -85,12 +84,6 @@ def process_image(image):
             if contours:
                 B = contours[0][:, 0, :]  # Extract Nx2 points
                 Bs.append(B)
-
-    # Filter convex contours
-    for B in Bs:
-        if convex_judge(B):
-            all_Bs.append(B)
-
     # Convert the list of all contours to a numpy array
-    all_Bs_array = np.array(all_Bs, dtype=object)
+    all_Bs_array = np.array(Bs, dtype=object)
     return all_Bs_array
