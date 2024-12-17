@@ -6,7 +6,16 @@ from sklearn.cluster import KMeans
 class iterativeclustering:
 
     def __init__(self):
-        pass
+        self.normalization = None
+
+    def norm(self, data):
+        data_mean = np.mean(data, axis=0)
+        data_max = np.max((data-data_mean), axis=0)
+        self.normalization = [data_mean, data_max]
+        return (data-data_mean)/data_max
+
+    def reverse_norm(self, data_norm):
+        return data_norm*self.normalization[1]+self.normalization[0]
 
     def assignlabels(self, data, mu, sigma):
         
