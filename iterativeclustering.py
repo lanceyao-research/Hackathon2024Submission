@@ -100,7 +100,7 @@ class iterativeclustering:
             # 1. Change in log-likelihood is below tolerance
             # 2. All classes have more than one data point
             if (delta_L < tol) and np.all(counts > 1):
-                print(f"Converged at iteration {count}")
+                #print(f"Converged at iteration {count}")
                 break
             else:
                 L = L_new
