@@ -105,6 +105,7 @@ class ContourAnalyzer:
                 'perimeter': perimeter,
                 'centroid_y': props.centroid[0],
                 'centroid_x': props.centroid[1],
+                'eccentricity': props.eccentricity,
                 'major_axis_length': props.major_axis_length,
                 'minor_axis_length': props.minor_axis_length,
                 'aspect_ratio': props.major_axis_length / props.minor_axis_length if props.minor_axis_length > 0 else float(
