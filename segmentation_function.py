@@ -19,7 +19,8 @@ def water_shed_segmentation(BW, threshold):
     """
     D = -distance_transform_edt(BW)
     M = D < -threshold
-    L = watershed(D, label(M), mask=BW)
+    kernel = np.ones((5, 5), np.uint8)  # 5x5 kernel for erosion
+    L = watershed(D, label(cv2.erode(M.astype(np.uint8)*255, kernel, iterations=1)), mask=BW)
     return L
 
 
