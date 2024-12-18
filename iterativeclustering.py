@@ -209,11 +209,12 @@ class iterativeclustering:
                 # Store the number of unique classes
                 num_class[k_idx, cnt] = len(np.unique(class_idx_em_temp))
     
-                # Compute and store the probability matrix
-                P_mat[k_idx][cnt] = self.P_matrix(data, class_idx_em_temp, params)
-    
                 # Compute and store P_max
                 if np.max(class_idx_em_temp) != 0:
+
+                    # Compute and store the probability matrix
+                    P_mat[k_idx][cnt] = self.P_matrix(data, class_idx_em_temp, params)
+                    
                     # Extract the current P_mat
                     current_P_mat = P_mat[k_idx][cnt]
     
